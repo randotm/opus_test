@@ -35,6 +35,11 @@ class WordsController extends Controller
 
     }
 
+    /**
+     * Shows file upload view for adding words to database
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function form() {
         return view('upload');
     }
