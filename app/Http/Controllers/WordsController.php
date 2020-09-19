@@ -8,13 +8,23 @@ use \App\Word;
 
 class WordsController extends Controller
 {
+
+    /**
+     * Shows file upload view for adding words to database
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function load_to_db_form() {
+        return view('upload');
+    }
+
     /**
      * Loads words from a file to the database
      * 
      * @param  Request  $request
      * @return void
      */
-    public function load(Request $request) {
+    public function load_to_db(Request $request) {
 
         $path = $request->file('upload')->store('word_files');
         $words_file = Storage::get($path);
@@ -33,15 +43,6 @@ class WordsController extends Controller
             $word_instance->save();
         }
 
-    }
-
-    /**
-     * Shows file upload view for adding words to database
-     * 
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function form() {
-        return view('upload');
     }
 
     /**
@@ -71,6 +72,5 @@ class WordsController extends Controller
 
         return view('anagrams', ['word' => $word, 'anagrams' => $anagrams]);
     }
-
     
 }

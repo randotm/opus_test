@@ -20,7 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/upload', 'WordsController@form');
+
+Route::get('/upload', 'WordsController@load_to_db_form');
+Route::post('/upload', 'WordsController@load_to_db');
+
 Route::get('/anagram', 'WordsController@anagram_form');
-Route::post('/upload', 'WordsController@load');
 Route::post('/anagram', 'WordsController@get_anagrams');
