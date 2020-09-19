@@ -43,4 +43,34 @@ class WordsController extends Controller
     public function form() {
         return view('upload');
     }
+
+    /**
+     * Shows anagram querying view
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function anagram_form() {
+        return view('anagram_form');
+    }
+
+    /**
+     * Loads words from a file to the database
+     * 
+     * @param  Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function get_anagrams(Request  $request) {
+
+        $word = $request->word;
+        $word_length = strlen($word);
+        $letters_array = str_split($word);
+        sort($letters_array);
+        $ordered_letters = implode('', $letters_array);
+        
+        $anagrams = Word::where('length', $word_length)->where('ordered_letters', $ordered_letters)->where('word', '!=', $word)->get();
+
+        return view('anagrams', ['word' => $word, 'anagrams' => $anagrams]);
+    }
+
+    
 }
