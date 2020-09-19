@@ -15,9 +15,9 @@ class CreateWordsTable extends Migration
     {
         Schema::create('words', function (Blueprint $table) {
             $table->id();
-            $table->string('word', 25);
+            $table->string('word', 50);
             $table->smallInteger('length');
-            $table->string('ordered_letters');
+            $table->binary('ordered_letters');
         });
     }
 
