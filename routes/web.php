@@ -20,4 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/import_words/{parameterized_url}', 'WordsController@load');
+Route::get('/upload', 'WordsController@form');
+Route::post('/upload', 'WordsController@load');
