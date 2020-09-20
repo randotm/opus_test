@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/login', 'WordsController@react_lf');
+Route::get('/upload', 'WordsController@react_uf');
+Route::get('/anagram', 'WordsController@react_af');

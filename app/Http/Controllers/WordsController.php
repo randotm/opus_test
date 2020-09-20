@@ -134,4 +134,17 @@ class WordsController extends Controller
         return view('anagrams', ['word' => $word, 'anagrams' => $anagrams]);
     }
     
+    public function react() {
+        return view ('react');
+    }
+    public function react_lf() {
+        return view ('react.login');
+    }
+    public function react_uf() {
+        return view ('react.upload');
+    }
+    public function react_af() {
+        return view ('react.anagram');
+    }
 }
+
