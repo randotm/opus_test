@@ -13,6 +13,6 @@ require('./bootstrap');
  */
 
 require('./components/Example');
-require('./components/LoginForm');
-require('./components/WordsUpload');
-require('./components/AnagramsTable');
+require('./components/Login/LoginForm');
+require('./components/Words/WordsUpload');
+require('./components/Words/AnagramsForm');

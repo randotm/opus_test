@@ -108,7 +108,29 @@ class WordsController extends Controller
      * @param string $word
      * @return array
      */
-    private function get_anagrams(string $input_word) {
+    public function get_anagrams(Request $request) {
+
+        $word = $request->word;
+        $sad = array();
+        $sad['word'] = $word;
+        //dd(json_encode($sad));
+        $word_length = strlen($word);
+        $letters_array = str_split($word);
+        sort($letters_array);
+        $ordered_letters = implode('', $letters_array);
+        
+        $anagrams = Word::where('length', $word_length)->where('ordered_letters', $ordered_letters)->where('word', '!=', $word)->get();
+
+        return $anagrams;
+    }
+
+    /**
+     * Gets anagrams for the word from database
+     * 
+     * @param string $word
+     * @return array
+     */
+    public function get_anagrams_blade(string $input_word) {
 
         $word = $input_word;
         $word_length = strlen($word);
@@ -127,10 +149,11 @@ class WordsController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function display_anagrams(Request $request) {
+    public function display_anagrams_blade(Request $request) {
         
         $word = $request->word;
-        $anagrams = $this->get_anagrams($word);
+        //dd($word);
+        $anagrams = $this->get_anagrams_blade($word);
         return view('anagrams', ['word' => $word, 'anagrams' => $anagrams]);
     }
     
