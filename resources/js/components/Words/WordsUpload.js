@@ -23,7 +23,7 @@ class WordsUpload extends React.Component {
         })
         .catch(error => {
           console.error('Error:', error);
-        });;
+        });
     }
     
     render() {
