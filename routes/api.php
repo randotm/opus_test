@@ -18,6 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/login', 'WordsController@react_lf');
-Route::get('/upload', 'WordsController@react_uf');
-Route::get('/anagram', 'WordsController@react_af');
+Route::get('/login', 'WordsController@react_login_form');
+Route::get('/upload', 'WordsController@react_upload_form');
+Route::get('/anagram', 'WordsController@react_anagrams_form');

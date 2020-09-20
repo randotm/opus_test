@@ -12,15 +12,6 @@ class WordsController extends Controller
 {
 
     /**
-     * Shows file upload view for adding words to database
-     * 
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function load_to_db_form() {
-        return view('upload');
-    }
-
-    /**
      * Loads words from a file to the database
      * 
      * @param Request $request
@@ -94,15 +85,6 @@ class WordsController extends Controller
     }
 
     /**
-     * Shows anagram querying view
-     * 
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function anagram_form() {
-        return view('anagram_form');
-    }
-
-    /**
      * Gets anagrams for the word from database
      * 
      * @param string $word
@@ -123,50 +105,31 @@ class WordsController extends Controller
 
         return $anagrams;
     }
-
+    
     /**
-     * Gets anagrams for the word from database
+     * Shows login view
      * 
-     * @param string $word
-     * @return array
-     */
-    public function get_anagrams_blade(string $input_word) {
-
-        $word = $input_word;
-        $word_length = strlen($word);
-        $letters_array = str_split($word);
-        sort($letters_array);
-        $ordered_letters = implode('', $letters_array);
-        
-        $anagrams = Word::where('length', $word_length)->where('ordered_letters', $ordered_letters)->where('word', '!=', $word)->get();
-
-        return $anagrams;
-    }
-
-    /**
-     * Shows anagram answers view
-     * 
-     * @param Request $request
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function display_anagrams_blade(Request $request) {
-        
-        $word = $request->word;
-        //dd($word);
-        $anagrams = $this->get_anagrams_blade($word);
-        return view('anagrams', ['word' => $word, 'anagrams' => $anagrams]);
-    }
-    
-    public function react() {
-        return view ('react');
-    }
-    public function react_lf() {
+    public function react_login_form() {
         return view ('react.login');
     }
-    public function react_uf() {
+
+    /**
+     * Shows words upload to database view
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function react_upload_form() {
         return view ('react.upload');
     }
-    public function react_af() {
+
+    /**
+     * Shows anagram querying and answers view
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function react_anagrams_form() {
         return view ('react.anagram');
     }
 }
