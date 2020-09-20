@@ -21,8 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/upload', 'WordsController@load_to_db_form');
+Route::get('/upload', 'WordsController@load_to_db_form')->name('upload_form');
 Route::post('/upload', 'WordsController@load_to_db');
 
-Route::get('/anagram', 'WordsController@anagram_form');
-Route::post('/anagram', 'WordsController@get_anagrams');
+Route::get('/anagram', 'WordsController@anagram_form')->name('anagram_form');
+Route::post('/anagram', 'WordsController@display_anagrams');
