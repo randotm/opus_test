@@ -3,17 +3,20 @@
 ---
 
 ## Software requirements to run:
-PHP ^7.2.5
+PHP: ^7.2.5
+
+MySQL database: ^5.7.31
+
 Composer installed
 
 ## To run the app:
 1. download git repo
 1. run composer install
-1. make a copy of .env.example and name it .env
-1. to generate app key, run php artisan key:generate
+1. make a copy of .env.example and name it .env with `cp .env.example .env`
+1. to generate app key, run `php artisan key:generate`
 1. change values in .env to make them match your setup
-1. to generate database, run php artisan migrate
-1. to start the app, run php artisan serve
+1. to generate database, run `php artisan migrate`
+1. to start the app, run `php artisan serve`
 
 
 ## Parts of the requirements I was not able to do:
