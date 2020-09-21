@@ -39,6 +39,4 @@ class WordsUpload extends React.Component {
     }
 }
 
-if (document.getElementById('uploadField')) {
-    ReactDOM.render(<WordsUpload />, document.getElementById('uploadField'));
-}
+export default WordsUpload;

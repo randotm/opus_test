@@ -18,10 +18,6 @@
 
 </head>
 <body>
-    <div id="app">
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+    <div id="root"></div>
 </body>
 </html>

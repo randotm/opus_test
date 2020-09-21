@@ -60,8 +60,4 @@ class AnagramsForm extends React.Component {
     }
 }
 
-export default AnagramsForm
-
-if (document.getElementById('anagramTable')) {
-    ReactDOM.render(<AnagramsForm />, document.getElementById('anagramsForm'));
-}
+export default AnagramsForm;
