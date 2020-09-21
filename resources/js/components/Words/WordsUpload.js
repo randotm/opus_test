@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom';
 class WordsUpload extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            uploadStatus: '',
+        };
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -20,21 +23,28 @@ class WordsUpload extends React.Component {
         }).then(response => response.json())
         .then(result => {
           console.log('Success:', result);
+          this.setState({uploadStatus: result});
         })
         .catch(error => {
           console.error('Error:', error);
-        });
+          this.setState({uploadStatus: error});
+        }).then(() => {
+            document.getElementById('uploadResult').innerText = 'Status: ' + this.state.uploadStatus.message;
+        })
     }
     
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-            <label>
-                File:
-                <input type="file" id="wordsFile" name="wordsFile" />
-            </label>
-            <input type="submit" value="Submit" />
-            </form>
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                <label>
+                    File:
+                    <input type="file" id="wordsFile" name="wordsFile" />
+                </label>
+                <input type="submit" value="Submit" />
+                </form>
+                <p id="uploadResult"></p>
+            </div>
         );
     }
 }
